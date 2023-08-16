@@ -20,7 +20,7 @@ public class Question11 {
 		System.out.println("alanı = " + 3.14*r*r);
 		}
 		else
-			System.out.println("yarıçap negatif olamaz );  // "\n" ile alt satıra geçirir
+			System.out.println("yarıçap negatif olamaz" );  // "\n" ile alt satıra geçirir
 		
 		
 		
