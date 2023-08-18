@@ -10,45 +10,46 @@ public class Question28 {
 
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("1. sayı giriniz");
-		int sayi3 = sc.nextInt();
+		String operator = "";
+		System.out.println("işlem yapılacak sayı");
+		double sayi = sc.nextInt();
+		System.out.println("yapılacak işlem");
+		operator = sc.next();
 
-		System.out.println("2. sayı giriniz");
-		int sayi4 = sc.nextInt();
+		double sonuc = sayi;
 
-		String islem2 = "";
+		while (operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/")) {
 
-		System.out.println("yapılacak işlem nedir");
-		islem2 = sc.next();
+			System.out.println("işlem yapılacak sayı");
+			double sayi2 = sc.nextInt();
+			switch (operator) {
+			case "+":
+				sonuc = sonuc + sayi2;
 
-		int sonuc2 = 0;
+				break;
+			case "-":
+				sonuc = sonuc - sayi2;
 
-		switch (islem2) {
-		case "+":
-			sonuc2 = sayi3 + sayi4;
+				break;
+			case "*":
+				sonuc = sonuc * sayi2;
 
-			break;
+				break;
+			case "/":
+				sonuc = sonuc / sayi2;
 
-		case "-":
-			sonuc2 = sayi3 - sayi4;
+				break;
 
-			break;
+			default:
+				operator = "";
+				break;
+			}
+			System.out.println("yapılacak işlem");
+			operator = sc.next();
 
-		case "*":
-			sonuc2 = sayi3 * sayi4;
-
-			break;
-
-		case "/":
-			sonuc2 = sayi3 / sayi4;
-
-			break;
-
-		default:
-			break;
 		}
 
-		System.out.println(sonuc2);
+		System.out.println(sonuc);
 		
 		
 
