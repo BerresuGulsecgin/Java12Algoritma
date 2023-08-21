@@ -14,6 +14,7 @@ public class Question33 {
 
 		Scanner sc = new Scanner(System.in);
 		boolean x = true;
+		int sayac = 0;
 
 		System.out.println("mail girin");
 		String mail = sc.next();
@@ -21,10 +22,18 @@ public class Question33 {
 		String format1 = "@hotmail.com";
 		String format2 = "@outlook.com";
 
-		while (x) {  
+		for (int i = 0; i < mail.length(); i++) {
+			if (mail.charAt(i) == '@') {
+				sayac++;
 
-			if (mail.substring((mail.length() - 12)).equals(format1)
-					|| mail.substring((mail.length() - 12)).equals(format2)) {
+			}
+
+		}
+
+		while (x) {
+
+			if (sayac == 1 && (mail.substring((mail.length() - 12)).equals(format1)
+					|| mail.substring((mail.length() - 12)).equals(format2))) {
 				System.out.println("şifrenizi giriniz");
 				String sifre = sc.next();
 				System.out.println(" şifrenizi yeniden  giriniz");

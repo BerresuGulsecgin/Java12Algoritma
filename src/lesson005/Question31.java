@@ -11,7 +11,7 @@ public class Question31 {
 
 		// bunun boşluklu çıktısını düzelt Java , Spring, Postgre , React gibi
 
-		String text = "Java,Spring,Postgre,React";
+		String text = "Java  ,  Spring , Postgre ,  React";
 
 		System.out.println(text.substring(0, 4));
 		System.out.println(text.substring(5, 11));
@@ -30,10 +30,9 @@ public class Question31 {
 		for (int i = 0; i < text.length(); i++) {
 			if (text.charAt(i) == ',') {
 				System.out.println();
-				continue;
 
-			} // continue yerine buraya else de olur
-			System.out.print(text.charAt(i));
+			} else
+				System.out.print(text.charAt(i));
 
 		}
 		System.out.println();
@@ -52,6 +51,27 @@ public class Question31 {
 		}
 		System.out.println(text.substring(index));
 
+		System.out.println("******************");
+
+		String kelime = "";
+
+		for (int i = 0; i < text.length(); i++) {
+			if (text.charAt(i) == ' ') {
+				continue;
+
+			}
+
+			else if (text.charAt(i) == ',') {
+				System.out.println();
+				continue;
+
+			} else {
+				kelime = kelime + text.charAt(i);
+			}
+
+			System.out.print(text.charAt(i));
+
+		}
 	}
 
 }
