@@ -10,7 +10,7 @@ public class Question33 {
 		// hotmail ve outlook kabul et
 		// şifreler uyuşmaz ve ya 8 den küçükse uyarı verdir
 		
-		//@hotmail.com@hotmail.com girilince hata vermiyo sorunu varbunu çöz
+		//@hotmail.com@hotmail.com girilince hata vermiyo sorunu var bunu çöz
 
 		Scanner sc = new Scanner(System.in);
 		boolean x = true;
