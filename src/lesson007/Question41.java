@@ -16,15 +16,13 @@ public class Question41 {
 				ikinci = max;
 				max = sayilar[i];
 
-			}else if (sayilar[i]>max && sayilar[i]!=max ) {
-				ikinci=sayilar[i];
-				
+			} else if (sayilar[i] > max && sayilar[i] != max) {
+				ikinci = sayilar[i];
+
 			}
 
 		}
 		System.out.println(ikinci);
-		
-		
 
 	}
 
