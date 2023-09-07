@@ -103,4 +103,12 @@ public class Product {
 
 	}
 
+	@Override
+	public String toString() {
+		return "Product [name=" + name + ", ıd=" + ıd + ", stock=" + stock + ", price=" + price + ", prodocutCode="
+				+ prodocutCode + ", isActive=" + isActive + "]";
+	}
+	
+	
+
 }
