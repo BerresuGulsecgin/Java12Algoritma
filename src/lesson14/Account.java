@@ -9,6 +9,10 @@ public class Account {
 	
 	private boolean krediBasvurusu;
 	private double istenenKrediMiktari;
+	private double krediTutarı;
+	private int krediNotu;
+	
+	public static final int KREDI_PUAN_ARTİS_MİKTARİ=10;
 
 	Random rnd = new Random();
 
@@ -55,6 +59,27 @@ public class Account {
 	}
 	public void setIstenenKrediMiktari(double istenenKrediMiktari) {
 		this.istenenKrediMiktari = istenenKrediMiktari;
+	}
+	
+	
+	public double getKrediTutarı() {
+		return krediTutarı;
+	}
+	public void setKrediTutarı(double krediTutarı) {
+		this.krediTutarı = krediTutarı;
+	}
+	
+	
+	public int getKrediNotu() {
+		return krediNotu;
+	}
+	public void setKrediNotu(int krediNotu) {
+		this.krediNotu = krediNotu;
+	}
+	
+	
+	public static int getKrediPuanArtisMiktari() {
+		return KREDI_PUAN_ARTİS_MİKTARİ;
 	}
 	private String randomAcountNo() {
 		int number = rnd.nextInt(1000, 1000000);

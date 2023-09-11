@@ -1,11 +1,16 @@
 package lesson14;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
 
 	private String name;
 	private String surname;
 	private String email;
 	private Account account;
+	
+	private List<Mail>gelenKutusu;
 
 	public User() {
 		super();
@@ -16,6 +21,8 @@ public class User {
 		this.name = name;
 		this.surname = surname;
 		this.email = UserManager.generateEmail(name, surname);
+		this.gelenKutusu=new ArrayList<>();
+		 
 		
 	}
 
@@ -50,5 +57,14 @@ public class User {
 	public void setAccount(Account account) {
 		this.account = account;
 	}
+
+	public List<Mail> getGelenKutusu() {
+		return gelenKutusu;
+	}
+
+	public void setGelenKutusu(List<Mail> gelenKutusu) {
+		this.gelenKutusu = gelenKutusu;
+	}
+	
 
 }
