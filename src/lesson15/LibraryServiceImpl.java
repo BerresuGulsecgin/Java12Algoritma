@@ -23,13 +23,15 @@ public class LibraryServiceImpl implements ILibraryService {
 	public void getAllBooks() { // tamamen görsellik foreach(Book book : Main.library.getBookList()) ile yazdır
 								// geç
 
-		String list = "No\tName\t\tAuthorName\tCategory\tPrice\n";
+		String list = "No\tName\t\tAuthorName\tCategory\tEStatus\t\tPrice\t\tID\n";
 		int index = 1;
 		for (int i = 0; i < Main.library.getBookList().size(); i++) {
 			list += index + ".\t" + Main.library.getBookList().get(i).getName() + "\t\t"
 					+ Main.library.getBookList().get(i).getAuthorName() + "\t\t"
 					+ Main.library.getBookList().get(i).getCategory().getName() + "\t\t"
-					+ Main.library.getBookList().get(i).getPrice() + "\n";
+					+ Main.library.getBookList().get(i).geteStatus() + "\t\t"
+					+ Main.library.getBookList().get(i).getPrice() + "\t\t" + Main.library.getBookList().get(i).getId()
+					+ "\n";
 			index++;
 		}
 		System.out.print(list);
@@ -38,6 +40,8 @@ public class LibraryServiceImpl implements ILibraryService {
 
 	@Override
 	public void getAllBooksByActive() {
+
+		Main.library.getBookList().forEach(product -> System.out.println(product.getId()));
 		String list = "No\tName\t\tAuthorName\tCategory\tPrice\n";
 		int index = 1;
 		for (int i = 0; i < Main.library.getBookList().size(); i++) {
@@ -83,11 +87,45 @@ public class LibraryServiceImpl implements ILibraryService {
 			if (Main.library.getBookList().get(i).getId().equals(ıd)) {
 				System.out.println(Main.library.getBookList().get(i).getName() + " adlı kitap silindi");
 				Main.library.getBookList().remove(i);
-				
+
 				return;
 			}
 		}
 		System.out.println("bu ıd ye ait kitap yok");
+
+	}
+
+	@Override
+	public void changeStatusToDeleted(String id) {
+		Book book = findById(id);
+		if (book != null) {
+			book.seteStatus(EStatus.DELETED);
+		} else {
+			System.out.println("silmek istediğiniz ıd de kitap bulunamadı");
+		}
+
+	}
+
+	private Book findById(String id) {
+		for (Book book : Main.library.getBookList()) {
+			if (book.getId().equals(id)) {
+				return book;
+			}
+		}
+		return null;
+
+	}
+
+	@Override
+	public void applyDiscount(String id, int tutar) {
+
+		Book book = findById(id);
+
+		if (book != null) {
+			book.setPrice(book.getPrice() - tutar);
+		}else {
+			System.out.println("kitap bulunamadı");
+		}
 
 	}
 
