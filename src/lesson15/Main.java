@@ -128,6 +128,7 @@ public class Main {
 			System.out.println("2 Login");
 			System.out.println("0 Sistemi kapat");
 			int secim = Util.getIntValue("seçim giriniz");
+
 			switch (secim) {
 			case 1:
 
@@ -157,14 +158,25 @@ public class Main {
 		while (true) {
 			System.out.println("Hoşgeldiniz" + customer.getUsername());
 			System.out.println("1 kitap kirala");
+			System.out.println("2 kiralanan kitapları listele");
+			System.out.println("3 kitap iade");
 			System.out.println("0 Sistemi kapat");
 
 			int secim = Util.getIntValue("seçim giriniz");
+			String id;
+
 			switch (secim) {
 			case 1:
 
-				// TODO : kitap kirala metodu yazılacak
-				System.out.println("kitap kiralama metodu");
+				customerManager.rentBook(customer);
+
+				break;
+			case 2:
+				customerManager.kiralananKitaplarıGoster(customer);
+
+				break;
+			case 3:
+				customerManager.iade(customer);
 
 				break;
 

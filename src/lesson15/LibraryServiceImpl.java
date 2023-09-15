@@ -106,7 +106,7 @@ public class LibraryServiceImpl implements ILibraryService {
 
 	}
 
-	private Book findById(String id) {
+	public Book findById(String id) {
 		for (Book book : Main.library.getBookList()) {
 			if (book.getId().equals(id)) {
 				return book;
@@ -123,7 +123,7 @@ public class LibraryServiceImpl implements ILibraryService {
 
 		if (book != null) {
 			book.setPrice(book.getPrice() - tutar);
-		}else {
+		} else {
 			System.out.println("kitap bulunamadı");
 		}
 

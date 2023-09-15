@@ -1,6 +1,12 @@
 package lesson15;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+;
+
 public class CustomerManager {
+	static DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss");
 
 	public void register() {
 
@@ -50,6 +56,71 @@ public class CustomerManager {
 			return customer;
 		}
 
+	}
+
+	public void rentBook(Customer customer) {
+		Main.serviceImpl.getAllBooks();
+		String id = Util.getStringValue("kiralamak istediğiniz ıd ");
+		Book book = Main.serviceImpl.findById(id);
+
+		if (book == null) {
+			System.out.println("id hatalı");
+			return;
+		}
+
+		if (book.geteStatus().name().equals("ACTIVE")) {
+			if (customer.getBalance() >= book.getPrice()) {
+				customer.getRentedBooks().add(book);
+				customer.setBalance(customer.getBalance() - book.getPrice());
+				book.seteStatus(EStatus.INRENT);
+				book.setRentDate(LocalDateTime.now());
+				book.setReturnedDate(iadeTarihiBelirle());
+				System.out.println("Kitabı iade etmeniz gereken tarih : " + book.getReturnedDate().format(format));
+				System.out.println("kitap kiralandı");
+			} else {
+				System.out.println("bakiye yeterisiz");
+			}
+
+		} else {
+			System.out.println("kitap aktif değil");
+		}
+
+	}
+
+	public void kiralananKitaplarıGoster(Customer customer) {
+		if (customer.getRentedBooks().isEmpty()) {
+			System.out.println("kiralanan kitap yok");
+		} else {
+			customer.getRentedBooks().forEach(book -> System.out.println(
+					book.getName() + " iade tarihi : " + book.getReturnedDate().format(format) + " " + book.getId()));
+		}
+	}
+
+	public void iade(Customer customer) {
+		kiralananKitaplarıGoster(customer);
+		String id = Util.getStringValue("iade yapılacak kitap ıd ");
+		Book book = Main.serviceImpl.findById(id);
+		if (book == null) {
+			System.out.println("id hatalı");
+			return;
+		}
+
+		if (customer.getRentedBooks().remove(book)) {
+			book.seteStatus(EStatus.ACTIVE);
+			System.out.println("kitap iade işlemi başarılı");
+		} else {
+			System.out.println("kiralanan kitaplar arasında böyle bir kitap yok");
+		}
+
+	}
+
+	public LocalDateTime iadeTarihiBelirle() {
+
+		int iadeTarihi = Util.getIntValue("kaç gün sonra iade edeceksiniz.");
+		LocalDateTime currentDate = LocalDateTime.now();
+
+		LocalDateTime returnedDate = currentDate.plusDays(iadeTarihi);
+		return returnedDate;
 	}
 
 	private Customer findByUsername(String username) {
