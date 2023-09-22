@@ -1,0 +1,33 @@
+
+
+
+Twetter (X) clone
+
+Admin->
+User -> username, password, tel, Profil profil,
+Profil -> tweetSayisi, photo(string), bio, registerTarihi, Address, Followers, Following, Tweet tweet listesi, Mesaj,
+Mesaj -> kimGönderdi, neZamanGönderdi,içerik (mesajlar dm kutusunda kim göndermiş ne göndermiş şeklinde tutalım)
+Adress -> city, country, Street, postaCode
+Tweet -> oluşturulmatarihi, içerik, beğeniSayisi, HashTeg(enum sınıfı yap).YorumSAyisi
+Yorum -> içerik, yorumyapılmatarihi, beğenisayisi, List<User> begenenler,
+
+
+(opsyonel) Retweet extend Tweet -> 
+
+userManager-> register,login,
+tweetat,
+retweetyap,
+tweeteyorumyap,
+twitisil,
+kenditwetlerimigoster,
+ıdyadausernameyegörekişilerinprofiliincele,
+mesajgönder,
+mesajlarıkontrolet
+user istediği useri engelleyebilsin.engeli kaldırabilsin
+
+
+adminmanager->
+tümkullanıcılarılistele
+tümprofillerilistele
+kullanıcıkısıtlanabilsin
+
